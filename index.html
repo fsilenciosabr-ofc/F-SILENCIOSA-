@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MÉTODO FORÇA SILENCIOSA</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+<style>
+:root{
+    --primary:#6D28D9;
+    --bg:#ffffff;
+    --card:#f7f7f9;
+    --text:#111111;
+    --gray:#6b7280;
+    --accent:#10b981;
+}
+
+*{margin:0;padding:0;box-sizing:border-box;}
+body{
+    background:var(--bg);
+    color:var(--text);
+    font-family:'Inter',sans-serif;
+    line-height:1.6;
+}
+
+/* Top notice */
+.top-notice{
+    background:var(--primary);
+    color:#fff;
+    text-align:center;
+    padding:12px;
+    font-weight:800;
+    font-size:.8rem;
+    letter-spacing:1px;
+}
+
+/* Logo */
+.logo-container{
+    text-align:center;
+    padding:40px 0 10px;
+}
+.logo-pulsing{
+    width:130px;
+    height:130px;
+    border-radius:50%;
+    border:4px solid var(--primary);
+    animation:pulse 2s infinite;
+}
+@keyframes pulse{
+    0%{box-shadow:0 0 0 0 rgba(109,40,217,.4);}
+    70%{box-shadow:0 0 0 25px rgba(109,40,217,0);}
+    100%{box-shadow:0 0 0 0 rgba(109,40,217,0);}
+}
+
+/* Container */
+.container{
+    max-width:820px;
+    margin:0 auto;
+    padding:0 20px;
+}
+
+/* Hero */
+header{
+    text-align:center;
+    padding:20px 0 60px;
+}
+h1{
+    font-size:3.2rem;
+    font-weight:900;
+    line-height:1;
+}
+h1 span{color:var(--primary);}
+.sub-headline{
+    color:var(--gray);
+    margin-top:20px;
+    font-size:1.15rem;
+}
+
+/* Notice */
+.resell-notice{
+    background:var(--card);
+    padding:25px;
+    border-radius:16px;
+    text-align:center;
+    margin-bottom:60px;
+    border:1px dashed var(--primary);
+}
+.resell-notice h2{
+    font-size:1.4rem;
+    font-weight:800;
+}
+
+/* Produtos */
+.module-block{
+    text-align:center;
+    margin-bottom:90px;
+}
+.module-img{
+    width:100%;
+    border-radius:18px;
+    margin-bottom:25px;
+    background:#eee;
+}
+.module-tag{
+    font-size:.75rem;
+    letter-spacing:2px;
+    text-transform:uppercase;
+    font-weight:800;
+    color:var(--primary);
+}
+.module-title{
+    font-size:2rem;
+    font-weight:800;
+    margin:10px 0;
+}
+.module-desc{
+    color:var(--gray);
+    font-size:1.1rem;
+    max-width:620px;
+    margin:0 auto;
+}
+
+/* Card vídeos */
+.video-card{
+    display:flex;
+    align-items:center;
+    gap:16px;
+    background:var(--card);
+    border-radius:18px;
+    padding:18px 20px;
+    margin-bottom:25px;
+    border:1px solid #e5e7eb;
+}
+.video-card img{
+    width:60px;
+    height:60px;
+    object-fit:contain;
+}
+.video-card h3{
+    font-size:1.1rem;
+    font-weight:900;
+    margin:0;
+    color:var(--primary);
+}
+.video-card p{
+    font-size:.9rem;
+    color:var(--gray);
+    margin-top:4px;
+}
+
+/* Vídeo */
+.reel-container{
+    max-width:350px;
+    margin:0 auto 90px;
+    border-radius:18px;
+    overflow:hidden;
+    background:#000;
+    position:relative;
+}
+.reel-video{
+    width:100%;
+    aspect-ratio:9/16;
+    object-fit:cover;
+}
+.btn-video-center{
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%);
+    background:var(--primary);
+    color:#fff;
+    border:none;
+    padding:20px 30px;
+    font-size:1.2rem;
+    font-weight:900;
+    border-radius:12px;
+    cursor:pointer;
+}
+
+/* Oferta */
+.pricing-section{
+    background:#fff;
+    border-radius:30px;
+    padding:50px 30px;
+    text-align:center;
+    border:3px solid var(--primary);
+    margin-bottom:100px;
+}
+.old-price{
+    color:#999;
+    text-decoration:line-through;
+}
+.new-price{
+    font-size:5rem;
+    font-weight:900;
+    margin:15px 0;
+}
+.new-price small{font-size:1.5rem;}
+.cta-button{
+    display:block;
+    background:var(--primary);
+    color:#fff;
+    padding:25px;
+    border-radius:16px;
+    text-decoration:none;
+    font-weight:900;
+    font-size:1.4rem;
+    margin:30px 0;
+}
+
+/* Popup */
+#sale-popup{
+    position:fixed;
+    bottom:20px;
+    left:20px;
+    background:#fff;
+    color:#000;
+    padding:12px 18px;
+    border-radius:12px;
+    display:none;
+    align-items:center;
+    gap:10px;
+    box-shadow:0 15px 35px rgba(0,0,0,.15);
+    z-index:9999;
+    border-left:5px solid var(--accent);
+}
+
+footer{
+    text-align:center;
+    font-size:.75rem;
+    color:#999;
+    padding:40px;
+}
+
+@media(max-width:600px){
+    h1{font-size:2.4rem;}
+    .new-price{font-size:4rem;}
+}
+</style>
+</head>
+
+<body>
+
+<div class="top-notice">LICENÇA PLR • PEGUE PRONTO E REVENDA</div>
+
+<div class="logo-container">
+<img src="https://s3.amazonaws.com/production.kirvano.com/products/c7345715-1f21-4a86-98f4-6e199a18e235/cover-1771461752850.webp" class="logo-pulsing">
+</div>
+
+<header class="container">
+<h1>MÉTODO<br><span>FORÇA SILENCIOSA</span></h1>
+<p class="sub-headline">
+Conteúdos estratégicos para homens que querem autoridade, disciplina e controle emocional — com direito de revenda.
+</p>
+</header>
+
+<main class="container">
+
+<div class="resell-notice">
+<h2>3 EBOOKS PRONTOS PARA VENDER NO ORGÂNICO</h2>
+</div>
+
+<div class="module-block">
+<img src="img1.png" class="module-img">
+<span class="module-tag">PLR 01</span>
+<h2 class="module-title">A Força Silenciosa</h2>
+<p class="module-desc">
+Um eBook sobre presença masculina, controle emocional e respeito silencioso. Ideal para conteúdo sigma e autoridade.
+</p>
+</div>
+
+<div class="module-block">
+<img src="img2.png" class="module-img">
+<span class="module-tag">PLR 02</span>
+<h2 class="module-title">Pare de se Cobrar</h2>
+<p class="module-desc">
+Leitura emocional focada na dor da auto cobrança masculina. Forte conexão e alta conversão no orgânico.
+</p>
+</div>
+
+<div class="module-block">
+<img src="img3.png" class="module-img">
+<span class="module-tag">PLR 03</span>
+<h2 class="module-title">O Despertar do Homem</h2>
+<p class="module-desc">
+Disciplina, rotina e autocontrole. Conteúdo ideal para criar audiência fiel e autoridade.
+</p>
+</div>
+
+<!-- Card Vídeos -->
+<div class="video-card">
+<img src="img-videos.png" alt="Vídeos para Reels">
+<div>
+<h3>900 VÍDEOS CURTOS PARA REELS</h3>
+<p>Conteúdos prontos para postar, viralizar e vender no orgânico.</p>
+</div>
+</div>
+
+<div class="reel-container">
+<video id="vid1" class="reel-video" src="video1.mp4"></video>
+<button class="btn-video-center" onclick="document.getElementById('vid1').play();this.style.display='none'">ASSISTIR</button>
+</div>
+
+<section class="pricing-section">
+<p style="color:var(--primary);font-weight:900;">LICENÇA DE REVENDA INCLUSA</p>
+<p class="old-price">De R$ 37,90</p>
+<p class="new-price"><small>R$</small>12,90</p>
+
+<a href="https://pay.kirvano.com/d4efbb38-847b-40d9-b723-53e05c28ef25" class="cta-button">
+QUERO REVENDER AGORA
+</a>
+
+<p style="color:var(--accent);font-weight:700;">
+<i class="fas fa-lock"></i> Compra segura • Acesso vitalício
+</p>
+</section>
+
+</main>
+
+<footer>
+© 2026 • Método Força Silenciosa
+</footer>
+
+<script>
+const names=["Gabriel","Lucas","Matheus","Vitor","Pedro","Felipe","Bruno","Thiago"];
+const surnames=["S.","O.","R.","F."];
+
+function showPopup(){
+const popup=document.getElementById("sale-popup");
+const name=names[Math.floor(Math.random()*names.length)];
+const sur=surnames[Math.floor(Math.random()*surnames.length)];
+popup.innerHTML=`<i class="fas fa-shopping-cart"></i><div><b>${name} ${sur}</b><br><small>acabou de comprar</small></div>`;
+popup.style.display="flex";
+setTimeout(()=>popup.style.display="none",5000);
+}
+setInterval(showPopup,12000);
+</script>
+
+<div id="sale-popup"></div>
+
+</body>
+</html>
