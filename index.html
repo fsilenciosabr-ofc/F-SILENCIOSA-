@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MÉTODO FORÇA SILENCIOSA</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #6D28D9;
+            --bg: #ffffff;
+            --card: #f7f7f9;
+            --text: #111111;
+            --gray: #6b7280;
+            --accent: #10b981;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            background: var(--bg);
+            color: var(--text);
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+        }
+
+        /* Top notice */
+        .top-notice {
+            background: var(--primary);
+            color: #fff;
+            text-align: center;
+            padding: 12px;
+            font-weight: 800;
+            font-size: .8rem;
+            letter-spacing: 1px;
+        }
+
+        /* Contador de Pessoas Online */
+        .online-count {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--gray);
+            margin-top: 15px;
+        }
+
+        .green-dot {
+            height: 8px;
+            width: 8px;
+            background-color: var(--accent);
+            border-radius: 50%;
+            display: inline-block;
+            box-shadow: 0 0 8px var(--accent);
+            animation: blink 1.5s infinite;
+        }
+
+        @keyframes blink {
+            0% { opacity: 1; }
+            50% { opacity: 0.3; }
+            100% { opacity: 1; }
+        }
+
+        /* Logo */
+        .logo-container {
+            text-align: center;
+            padding: 20px 0 10px;
+        }
+
+        .logo-pulsing {
+            width: 130px;
+            height: 130px;
+            border-radius: 50%;
+            border: 4px solid var(--primary);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(109,40,217,.4); }
+            70% { box-shadow: 0 0 0 25px rgba(109,40,217,0); }
+            100% { box-shadow: 0 0 0 0 rgba(109,40,217,0); }
+        }
+
+        .container {
+            max-width: 820px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        header {
+            text-align: center;
+            padding: 20px 0 60px;
+        }
+
+        h1 {
+            font-size: 3.2rem;
+            font-weight: 900;
+            line-height: 1;
+        }
+
+        h1 span { color: var(--primary); }
+
+        .sub-headline {
+            color: var(--gray);
+            margin-top: 20px;
+            font-size: 1.15rem;
+        }
+
+        .resell-notice {
+            background: var(--card);
+            padding: 25px;
+            border-radius: 16px;
+            text-align: center;
+            margin-bottom: 60px;
+            border: 1px dashed var(--primary);
+        }
+
+        .resell-notice h2 { font-size: 1.4rem; font-weight: 800; }
+
+        .module-block {
+            text-align: center;
+            margin-bottom: 90px;
+        }
+
+        .module-img {
+            width: 100%;
+            border-radius: 18px;
+            margin-bottom: 25px;
+            background: #eee;
+        }
+
+        .module-tag {
+            font-size: .75rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            font-weight: 800;
+            color: var(--primary);
+        }
+
+        .module-title {
+            font-size: 2rem;
+            font-weight: 800;
+            margin: 10px 0;
+        }
+
+        .module-desc {
+            color: var(--gray);
+            font-size: 1.1rem;
+            max-width: 620px;
+            margin: 0 auto;
+        }
+
+        /* Card Vídeos - AJUSTADO PARA IMAGEM ACIMA */
+        .video-card {
+            display: flex;
+            flex-direction: column; /* Imagem em cima do texto */
+            align-items: center;
+            text-align: center;
+            gap: 20px;
+            background: var(--card);
+            border-radius: 18px;
+            padding: 30px 20px;
+            margin-bottom: 25px;
+            border: 1px solid #e5e7eb;
+        }
+
+        .video-card img {
+            width: 80px; /* Aumentado levemente para destaque no topo */
+            height: auto;
+            object-fit: contain;
+        }
+
+        .video-card h3 {
+            font-size: 1.3rem;
+            font-weight: 900;
+            margin: 0;
+            color: var(--primary);
+        }
+
+        .video-card p {
+            font-size: 1rem;
+            color: var(--gray);
+            margin-top: 8px;
+        }
+
+        .reel-container {
+            max-width: 350px;
+            margin: 0 auto 90px;
+            border-radius: 18px;
+            overflow: hidden;
+            background: #000;
+            position: relative;
+        }
+
+        .reel-video {
+            width: 100%;
+            aspect-ratio: 9/16;
+            object-fit: cover;
+        }
+
+        .btn-video-center {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+            background: var(--primary);
+            color: #fff;
+            border: none;
+            padding: 20px 30px;
+            font-size: 1.2rem;
+            font-weight: 900;
+            border-radius: 12px;
+            cursor: pointer;
+        }
+
+        .pricing-section {
+            background: #fff;
+            border-radius: 30px;
+            padding: 50px 30px;
+            text-align: center;
+            border: 3px solid var(--primary);
+            margin-bottom: 100px;
+        }
+
+        .old-price { color: #999; text-decoration: line-through; }
+
+        .new-price {
+            font-size: 5rem;
+            font-weight: 900;
+            margin: 15px 0;
+        }
+
+        .new-price small { font-size: 1.5rem; }
+
+        .cta-button {
+            display: block;
+            background: var(--primary);
+            color: #fff;
+            padding: 25px;
+            border-radius: 16px;
+            text-decoration: none;
+            font-weight: 900;
+            font-size: 1.4rem;
+            margin: 30px 0;
+        }
+
+        /* Popup Melhorado */
+        #sale-popup {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            background: #fff;
+            color: #000;
+            padding: 15px 20px;
+            border-radius: 12px;
+            display: none;
+            align-items: center;
+            gap: 12px;
+            box-shadow: 0 15px 35px rgba(0,0,0,.15);
+            z-index: 9999;
+            border-left: 5px solid var(--accent);
+            min-width: 250px;
+        }
+
+        #sale-popup b { color: var(--text); }
+        #sale-popup small { color: var(--gray); font-size: 0.8rem; }
+
+        footer {
+            text-align: center;
+            font-size: .75rem;
+            color: #999;
+            padding: 40px;
+        }
+
+        @media(max-width:600px) {
+            h1 { font-size: 2.4rem; }
+            .new-price { font-size: 4rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="top-notice">LICENÇA PLR • PEGUE PRONTO E REVENDA</div>
+    
+    <div class="online-count">
+        <span class="green-dot"></span>
+        <span id="visitor-number">47</span> pessoas visualizando esta página agora
+    </div>
+
+    <div class="logo-container">
+        <img src="https://s3.amazonaws.com/production.kirvano.com/products/c7345715-1f21-4a86-98f4-6e199a18e235/cover-1771461752850.webp" class="logo-pulsing">
+    </div>
+
+    <header class="container">
+        <h1>MÉTODO<br><span>FORÇA SILENCIOSA</span></h1>
+        <p class="sub-headline">Conteúdos estratégicos para homens que querem autoridade, disciplina e controle emocional — com direito de revenda.</p>
+    </header>
+
+    <main class="container">
+        <div class="resell-notice">
+            <h2>3 EBOOKS PRONTOS PARA VENDER NO ORGÂNICO</h2>
+        </div>
+
+        <div class="module-block">
+            <img src="img1.png" class="module-img">
+            <span class="module-tag">PLR 01</span>
+            <h2 class="module-title">A Força Silenciosa</h2>
+            <p class="module-desc">Um eBook sobre presença masculina, controle emocional e respeito silencioso.</p>
+        </div>
+
+        <div class="module-block">
+            <img src="img2.png" class="module-img">
+            <span class="module-tag">PLR 02</span>
+            <h2 class="module-title">Pare de se Cobrar</h2>
+            <p class="module-desc">Leitura emocional focada na dor da auto cobrança masculina. Alta conversão.</p>
+        </div>
+
+        <div class="module-block">
+            <img src="img3.png" class="module-img">
+            <span class="module-tag">PLR 03</span>
+            <h2 class="module-title">O Despertar do Homem</h2>
+            <p class="module-desc">Disciplina, rotina e autocontrole. Ideal para criar autoridade.</p>
+        </div>
+
+        <div class="video-card">
+            <img src="img-videos.png" alt="Vídeos para Reels">
+            <div>
+                <h3>900 VÍDEOS CURTOS PARA REELS</h3>
+                <p>Conteúdos prontos para postar, viralizar e vender no orgânico.</p>
+            </div>
+        </div>
+
+        <div class="reel-container">
+            <video id="vid1" class="reel-video" src="video1.mp4"></video>
+            <button class="btn-video-center" onclick="document.getElementById('vid1').play();this.style.display='none'">ASSISTIR</button>
+        </div>
+
+        <section class="pricing-section">
+            <p style="color:var(--primary);font-weight:900;">LICENÇA DE REVENDA INCLUSA</p>
+            <p class="old-price">De R$ 37,90</p>
+            <p class="new-price"><small>R$</small>12,90</p>
+            <a href="https://pay.kirvano.com/d4efbb38-847b-40d9-b723-53e05c28ef25" class="cta-button">QUERO REVENDER AGORA</a>
+            <p style="color:var(--accent);font-weight:700;"><i class="fas fa-lock"></i> Compra segura • Acesso vitalício</p>
+        </section>
+    </main>
+
+    <footer>© 2026 • Método Força Silenciosa</footer>
+
+    <div id="sale-popup"></div>
+
+    <script>
+        // 100 Nomes e Sobrenomes Únicos (Sem repetição)
+        const buyers = [
+            "Gabriel Silva", "Lucas Oliveira", "Matheus Rodrigues", "Vitor Ferreira", "Pedro Santos", "Felipe Costa", "Bruno Souza", "Thiago Gomes", "Rafael Martins", "João Pereira",
+            "André Luiz", "Marcos Vinícius", "Daniel Alves", "Guilherme Souza", "Gustavo Lima", "Rodrigo Rocha", "Leonardo Dias", "Eduardo Nascimento", "Ricardo Mello", "Caio Castro",
+            "Henrique Barbosa", "Murilo Bernardes", "Hugo Cavalcanti", "Samuel Nobre", "Igor Guimarães", "Renan Lopes", "Otávio Farias", "Douglas Aguiar", "Iago Meireles", "Breno Cardoso",
+            "Danilo Mendes", "Arthur Antunes", "Victor Hugo", "Samuel Nunes", "Pablo Escobar", "Erick Fontana", "Yago Pontes", "Cauã Moreira", "Luan Medeiros", "Fabrício Diniz",
+            "Alexandre Borges", "Marcelo Freire", "Sandro Canto", "Ruan Esteves", "Sérgio Ramos", "Wellington Paiva", "Jefferson Trindade", "Alan Soares", "Adriano Falcão", "Cristiano Neves",
+            "Nícolas Rezende", "Túlio Viana", "Raul Seixas", "Fernando Montenegro", "Júlio César", "Mauro Sérgio", "Dante Alighieri", "Bernardo Velasco", "Enzo Gabriel", "Valentim Porto",
+            "Heitor Villa", "Theo Macedo", "Benício Junqueira", "Davi Lucca", "Joaquim Caldas", "Francisco Chagas", "Antônio Bandeira", "Vicente Amorim", "Tomás Aquino", "Bento XVI",
+            "Luiz Gustavo", "Fábio Assunção", "Jorge Ben", "Elias Júnior", "Matias Corrêa", "Ismael Togni", "Abraão Lincoln", "Isaac Newton", "Levi Fidelix", "Josué Guimarães",
+            "Caleb Ribeiro", "Natan Donato", "Rômulo Arantes", "Remo Peluso", "Augusto Cury", "César Menotti", "Dionísio Neto", "Apolo Silver", "Hércules Fontes", "Ulisses Guimarães",
+            "Ezequiel Prado", "Zaqueu Lima", "Otoniel Cruz", "Laércio Silva", "Edson Arantes", "Geraldo Alckmin", "Ronaldo Fenômeno", "Éverton Ribeiro", "Gerson Santos", "Zico Galinho"
+        ];
+
+        let buyerIndex = 0;
+
+        // Função para mostrar Popup com tempo aleatório
+        function showPopup() {
+            if (buyerIndex >= buyers.length) buyerIndex = 0;
+            
+            const popup = document.getElementById("sale-popup");
+            const name = buyers[buyerIndex];
+            const randomMinutes = Math.floor(Math.random() * 58) + 1; // 1 a 59 minutos
+            
+            popup.innerHTML = `
+                <i class="fas fa-shopping-cart" style="color:var(--accent); font-size: 1.5rem;"></i>
+                <div>
+                    <b>${name}</b><br>
+                    <small>comprou há ${randomMinutes} minutos</small>
+                </div>`;
+            
+            popup.style.display = "flex";
+            buyerIndex++;
+
+            setTimeout(() => {
+                popup.style.display = "none";
+            }, 5000);
+        }
+
+        // Inicia as notificações
+        setInterval(showPopup, 10000); // Mostra a cada 10 segundos
+
+        // Simulação de Visitantes Online (Números Realistas)
+        function updateVisitors() {
+            const visitorEl = document.getElementById("visitor-number");
+            let current = parseInt(visitorEl.innerText);
+            let change = Math.floor(Math.random() * 5) - 2; // Varia entre -2 e +2
+            let newValue = current + change;
+            
+            if (newValue < 30) newValue = 35; // Mantém um mínimo realista
+            if (newValue > 120) newValue = 110; // Mantém um máximo realista
+            
+            visitorEl.innerText = newValue;
+        }
+
+        setInterval(updateVisitors, 4000);
+    </script>
+</body>
+</html>
